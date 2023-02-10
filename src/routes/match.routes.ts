@@ -1,7 +1,17 @@
 import { Express, Request, Response } from "express";
-import { createMatchSchema } from "../schema/match.schema";
+import {
+  createMatchSchema,
+  deleteMatchSchema,
+  getMatchSchema,
+  updateMatchSchema,
+} from "../schema/match.schema";
 import validateResource from "../middleware/validateResource";
-import { createMatchHandler } from "../controller/match.controller";
+import {
+  createMatchHandler,
+  deleteMatchHandler,
+  getMatchHandler,
+  updateMatchHandler,
+} from "../controller/match.controller";
 
 function matchRoutes(app: Express) {
   app.get("match/healthcheck", (req: Request, res: Response) =>
@@ -12,6 +22,22 @@ function matchRoutes(app: Express) {
     "/api/match",
     [validateResource(createMatchSchema)],
     createMatchHandler
+  );
+  app.get(
+    "/api/match/:matchId",
+    [validateResource(getMatchSchema)],
+    getMatchHandler
+  );
+
+  app.patch(
+    "/api/match/:matchId",
+    [validateResource(updateMatchSchema)],
+    updateMatchHandler
+  );
+  app.delete(
+    "/api/match/:matchId",
+    [validateResource(deleteMatchSchema)],
+    deleteMatchHandler
   );
 }
 

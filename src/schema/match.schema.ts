@@ -31,6 +31,31 @@ const payload = {
   ),
 };
 
+const updatePayload = {
+  body: object({
+    guestTeam: string().optional(),
+    homeTeam: string().optional(),
+    description: string().optional(),
+    place: string().optional(),
+    date: string().optional(),
+    homeScore: number().optional(),
+    guestScore: number().optional(),
+  }).refine(
+    (data) => {
+      if (!data.date) {
+        return true;
+      }
+      let isValidDate = Date.parse(data.date);
+      console.log(isValidDate);
+      return !isNaN(isValidDate);
+    },
+    {
+      message: "Date string must be date format",
+      path: ["match creation"],
+    }
+  ),
+};
+
 const params = {
   params: object({
     matchId: string({
@@ -44,8 +69,8 @@ export const createMatchSchema = object({
 });
 
 export const updateMatchSchema = object({
-  ...payload,
   ...params,
+  ...updatePayload,
 });
 
 export const deleteMatchSchema = object({
