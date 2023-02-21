@@ -11,7 +11,7 @@ import deserializeUser from "./middleware/deserializeUser";
 import { restResponseTimeHistogram, startMetricsServer } from "./utils/metrics";
 import swaggerDocs from "./utils/swagger";
 import playerRoutes from "./routes/player.routes";
-
+import playerMatchRoutes from "./routes/player-match.routes";
 const port = config.get<number>("port");
 
 const app = express();
@@ -43,6 +43,7 @@ app.listen(port, async () => {
   routes(app);
   matchRoutes(app);
   playerRoutes(app);
+  playerMatchRoutes(app);
 
   // startMetricsServer();
 

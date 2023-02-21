@@ -6,7 +6,7 @@ export interface PlayerMatchInput {
   playerId: string;
   matchId: string;
   playerName: string;
-  onField: boolean;
+  onField?: boolean | undefined;
 }
 
 export interface PlayerMatchDocument
@@ -23,8 +23,8 @@ const playerMatchSchema = new mongoose.Schema(
     playerNumber: { type: Number, required: true },
     playingTime: { type: Number },
     onField: { type: Boolean, default: false },
-    entryTime: { type: Array<String>, default: [] },
-    exitTime: { type: Array<String>, default: [] },
+    entryTime: { type: [String], default: [] },
+    exitTime: { type: [String], default: [] },
     playerId: { type: String, required: true },
     matchId: { type: String, required: true },
     playerMatchId: {
@@ -40,7 +40,7 @@ const playerMatchSchema = new mongoose.Schema(
 );
 
 const PlayerMatchModel = mongoose.model<PlayerMatchDocument>(
-  "PlayerMatch",
+  "Player-Match",
   playerMatchSchema
 );
 

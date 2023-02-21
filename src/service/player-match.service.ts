@@ -2,7 +2,7 @@ import { FilterQuery, QueryOptions, UpdateQuery } from "mongoose";
 import PlayerMatchModel, {
   PlayerMatchDocument,
   PlayerMatchInput,
-} from "../models/playerMatch.model";
+} from "../models/player-match.model";
 import { databaseResponseTimeHistogram } from "../utils/metrics";
 
 export async function createPlayerMatch(input: PlayerMatchInput) {
