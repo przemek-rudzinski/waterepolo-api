@@ -13,6 +13,8 @@ import {
   updateMatchHandler,
 } from "../controller/match.controller";
 
+import requireUser from "../middleware/requireUser";
+
 function matchRoutes(app: Express) {
   app.get("match/healthcheck", (req: Request, res: Response) =>
     res.sendStatus(200)
@@ -20,22 +22,26 @@ function matchRoutes(app: Express) {
 
   app.post(
     "/api/match",
+    requireUser,
     [validateResource(createMatchSchema)],
     createMatchHandler
   );
   app.get(
     "/api/match/:matchId",
+    requireUser,
     [validateResource(getMatchSchema)],
     getMatchHandler
   );
 
   app.patch(
     "/api/match/:matchId",
+    requireUser,
     [validateResource(updateMatchSchema)],
     updateMatchHandler
   );
   app.delete(
     "/api/match/:matchId",
+    requireUser,
     [validateResource(deleteMatchSchema)],
     deleteMatchHandler
   );

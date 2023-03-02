@@ -21,6 +21,26 @@ export async function createPlayerMatch(input: PlayerMatchInput) {
   }
 }
 
+export async function findManyPlayerMatch(
+  query: FilterQuery<PlayerMatchDocument>,
+  options: QueryOptions = { lean: true }
+) {
+  const metricsLabels = {
+    operation: "findManyPlayerMatch",
+  };
+
+  const timer = databaseResponseTimeHistogram.startTimer();
+  try {
+    const result = await PlayerMatchModel.find(query, {}, options);
+    timer({ ...metricsLabels, success: "true" });
+    return result;
+  } catch (e) {
+    timer({ ...metricsLabels, success: "false" });
+
+    throw e;
+  }
+}
+
 export async function findPlayerMatch(
   query: FilterQuery<PlayerMatchDocument>,
   options: QueryOptions = { lean: true }

@@ -12,6 +12,7 @@ import { restResponseTimeHistogram, startMetricsServer } from "./utils/metrics";
 import swaggerDocs from "./utils/swagger";
 import playerRoutes from "./routes/player.routes";
 import playerMatchRoutes from "./routes/player-match.routes";
+
 const port = config.get<number>("port");
 
 const app = express();
@@ -45,7 +46,7 @@ app.listen(port, async () => {
   playerRoutes(app);
   playerMatchRoutes(app);
 
-  // startMetricsServer();
+  startMetricsServer();
 
   //swaggerDocs(app, port);
 });
