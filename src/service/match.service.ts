@@ -18,6 +18,27 @@ export async function createMatch(input: MatchInput) {
   }
 }
 
+export async function findAllMatches(
+  query: FilterQuery<MatchDocument>,
+  options: QueryOptions = { lean: true }
+) {
+  const metricsLabels = {
+    operation: "findAllMatch",
+  };
+
+  const timer = databaseResponseTimeHistogram.startTimer();
+  console.log("searching");
+  try {
+    const result = await MatchModel.find(query, {}, options);
+    timer({ ...metricsLabels, success: "true" });
+    return result;
+  } catch (e) {
+    timer({ ...metricsLabels, success: "false" });
+
+    throw e;
+  }
+}
+
 export async function findMatch(
   query: FilterQuery<MatchDocument>,
   options: QueryOptions = { lean: true }

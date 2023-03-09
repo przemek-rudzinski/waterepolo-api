@@ -8,6 +8,7 @@ import {
 import {
   createMatch,
   deleteMatch,
+  findAllMatches,
   findAndUpdateMatch,
   findMatch,
 } from "../service/match.service";
@@ -21,6 +22,19 @@ export async function createMatchHandler(
   const match = await createMatch(body);
 
   return res.send(match);
+}
+
+export async function getAllMatchesHandler(req: Request, res: Response) {
+  const matches = await findAllMatches({});
+
+  console.log({ matches: matches });
+
+  if (!matches || matches.length == 0) {
+    console.log("return");
+    return res.sendStatus(404);
+  }
+
+  return res.send(matches);
 }
 
 export async function getMatchHandler(

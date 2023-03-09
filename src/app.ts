@@ -12,10 +12,22 @@ import { restResponseTimeHistogram, startMetricsServer } from "./utils/metrics";
 import swaggerDocs from "./utils/swagger";
 import playerRoutes from "./routes/player.routes";
 import playerMatchRoutes from "./routes/player-match.routes";
+import cookieParser from "cookie-parser";
 
 const port = config.get<number>("port");
 
 const app = express();
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: config.get("origin"),
+    methods: "POST,GET,PUT,PATCH,OPTIONS,DELETE",
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
 
 app.use(express.json());
 

@@ -19,7 +19,7 @@ const payload = {
         return true;
       }
       let isValidDate = Date.parse(data.date);
-      console.log(isValidDate);
+      //console.log(isValidDate);
       return !isNaN(isValidDate);
     },
     {

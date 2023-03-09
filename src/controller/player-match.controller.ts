@@ -15,30 +15,24 @@ import {
   findPlayerMatch,
 } from "../service/player-match.service";
 
-export async function searchPlayerMatchHandler(
-  req: Request<SearchPlayerMatchInput>,
-  res: Response
-) {
+export async function searchPlayerMatchHandler(req: Request, res: Response) {
   const query = req.query;
 
-  console.log(query.onField);
   let playerMatches: any[] = [];
   if (query.onField == "true" || query.onField === "1") {
-    console.log("here");
     playerMatches = await findManyPlayerMatch({
       ...query,
       onField: true,
     });
   }
   if (query.onField == "false" || query.onField === "0") {
-    console.log("here false");
     playerMatches = await findManyPlayerMatch({
       ...query,
       onField: false,
     });
   }
+  console.log({ query });
   if (!query.onField) {
-    console.log("here nothing");
     playerMatches = await findManyPlayerMatch({ query });
   }
 

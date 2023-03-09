@@ -45,7 +45,8 @@ const searchQuery = {
         if (value === "false" || value === "0") {
           return false;
         }
-        throw new Error("Invalid value for onField");
+        // throw new Error("Invalid value for onField");
+        return null;
       }),
   }),
 };

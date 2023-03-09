@@ -10,6 +10,7 @@ import {
   createMatchHandler,
   deleteMatchHandler,
   getMatchHandler,
+  getAllMatchesHandler,
   updateMatchHandler,
 } from "../controller/match.controller";
 
@@ -26,6 +27,9 @@ function matchRoutes(app: Express) {
     [validateResource(createMatchSchema)],
     createMatchHandler
   );
+
+  app.get("/api/match/all", requireUser, getAllMatchesHandler);
+
   app.get(
     "/api/match/:matchId",
     requireUser,
