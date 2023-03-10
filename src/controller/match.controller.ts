@@ -27,7 +27,7 @@ export async function createMatchHandler(
 export async function getAllMatchesHandler(req: Request, res: Response) {
   const matches = await findAllMatches({});
 
-  console.log({ matches: matches });
+  // console.log({ matches: matches });
 
   if (!matches || matches.length == 0) {
     console.log("return");

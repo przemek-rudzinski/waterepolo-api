@@ -16,19 +16,19 @@ const deserializeUser = async (
     get(req, "cookies.refreshToken") || get(req, "headers.x-refresh");
 
   //console.log({ accessToken: accessToken, refreshToken: refreshToken });
-  if (!accessToken) {
+  if (!accessToken && !refreshToken) {
     return next();
   }
+  if (accessToken) {
+    const { decoded, expired } = verifyJwt(accessToken, "accessTokenPublicKey");
 
-  const { decoded, expired } = verifyJwt(accessToken, "accessTokenPublicKey");
-
-  //console.log({ decoded: decoded, expired: expired });
-  if (decoded) {
-    res.locals.user = decoded;
-    return next();
+    //console.log({ decoded: decoded, expired: expired });
+    if (decoded) {
+      res.locals.user = decoded;
+      return next();
+    }
   }
-  // console.log({ refresh: refreshToken });
-  if (expired && refreshToken) {
+  if (refreshToken) {
     const newAccessToken = await reIssueAccessToken({ refreshToken });
 
     if (newAccessToken) {

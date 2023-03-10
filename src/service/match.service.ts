@@ -27,7 +27,6 @@ export async function findAllMatches(
   };
 
   const timer = databaseResponseTimeHistogram.startTimer();
-  console.log("searching");
   try {
     const result = await MatchModel.find(query, {}, options);
     timer({ ...metricsLabels, success: "true" });
