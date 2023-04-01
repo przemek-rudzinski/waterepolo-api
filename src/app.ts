@@ -13,6 +13,7 @@ import swaggerDocs from "./utils/swagger";
 import playerRoutes from "./routes/player.routes";
 import playerMatchRoutes from "./routes/player-match.routes";
 import cookieParser from "cookie-parser";
+import impactRoutes from "./routes/impact.routes";
 
 const port = config.get<number>("port");
 
@@ -57,6 +58,7 @@ app.listen(port, async () => {
   matchRoutes(app);
   playerRoutes(app);
   playerMatchRoutes(app);
+  impactRoutes(app)
 
   startMetricsServer();
 
