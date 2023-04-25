@@ -11,6 +11,18 @@
     "createdAt": "2023-02-10T11:06:22.238Z",
     "updatedAt": "2023-02-10T11:06:22.238Z"
   },
+  "Event": {
+    "matchId": 1,
+    "events": [
+      {
+        "timeStamp": "current_timestamp",
+        "time": "07:15",
+        "playerMatchId": 1,
+        "type": "defense",
+        "action": "exclusion"
+      }
+    ]
+  },
   "Player": {
     "name": "Benda",
     "playerId": "id",
@@ -27,63 +39,43 @@
     "exitTime": [],
     "_id": "",
     "matchId": "match_izd8y9y1q3",
-    "playerId": "player_sififi"
-  },
-  "Impact": {
-    "sprint": 0,
-    "assist": 0,
-    "penalty": 0,
-    "exclusion": 0,
-    "playerMatchId": ""
-  },
-  "Shot": {
-    "fieldGoal": 0,
-    "fieldTarget": 0,
-    "fieldMiss": 0,
-    "penaltyGoal": 0,
-    "penaltyTarget": 0,
-    "penaltyMiss": 0,
-    "centerGoal": 0,
-    "centerTarget": 0,
-    "centerMiss": 0,
-    "powerPlayShot": 0,
-    "powerPlayTarget": 0,
-    "powerPlayMiss": 0,
-    "counterPlayShot": 0,
-    "counterPlayTarget": 0,
-    "counterPlayMiss": 0,
-    "playerMatchId": ""
-  },
-  "Turnover": {
-    "playTurnover": 0,
-    "foulTurnover": 0,
-    "powerPlayTurnover": 0,
-    "playerMatchId": "id"
-  },
-  "Defense": {
-    "block": 0,
-    "interception": 0,
-    "tackle": 0,
-    "defensiveCollapse": 0,
-    "playerMatchId": ""
-  },
-  "Foul": {
-    "throwInFoul": 0,
-    "tackleFoul": 0,
-    "penaltyFoul": 0,
-    "playerMatchId": ""
-  },
-  "Event": {
-    "matchId": 1,
-    "events": [
-      {
-        "timeStamp": "current_timestamp",
-        "time": "07:15",
-        "playerMatchId": 1,
-        "type": "defense",
-        "action": "exclusion"
-      }
-    ]
+    "playerId": "player_sififi",
+    "Impact": {
+      "sprint": 0,
+      "assist": 0,
+      "penalty": 0,
+      "exclusion": 0
+    },
+    "Shot": {
+      "fieldGoal": 0,
+      "fieldTarget": 0,
+      "fieldMiss": 0,
+      "penaltyGoal": 0,
+      "penaltyTarget": 0,
+      "penaltyMiss": 0,
+      "centerGoal": 0,
+      "centerTarget": 0,
+      "centerMiss": 0,
+      "powerPlayShot": 0,
+      "powerPlayTarget": 0,
+      "powerPlayMiss": 0,
+      "counterPlayShot": 0,
+      "counterPlayTarget": 0,
+      "counterPlayMiss": 0
+    },
+    "Turnover": {
+      "playTurnover": 0,
+      "foulTurnover": 0,
+      "powerPlayTurnover": 0,
+      "playerMatchId": "id"
+    },
+    "Defense": {
+      "block": 0,
+      "interception": 0,
+      "exclusion": 0,
+      "penaltyFoul": 0,
+      "defensiveCollapse": 0
+    }
   },
   "Goalkeeper": {
     "matchId": "abc123",
