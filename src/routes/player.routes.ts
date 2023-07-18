@@ -11,6 +11,7 @@ import {
   deletePlayerHandler,
   getPlayerHandler,
   updatePlayerHandler,
+  getAllPlayersHandler,
 } from "../controller/player.controller";
 import requireUser from "../middleware/requireUser";
 
@@ -25,6 +26,9 @@ function playerRoutes(app: Express) {
     [validateResource(createPlayerSchema)],
     createPlayerHandler
   );
+
+  app.get("/api/player/all", requireUser, getAllPlayersHandler);
+
   app.get(
     "/api/player/:playerId",
     requireUser,

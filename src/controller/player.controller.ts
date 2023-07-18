@@ -10,6 +10,7 @@ import {
   deletePlayer,
   findAndUpdatePlayer,
   findPlayer,
+  findAllPlayers,
 } from "../service/player.service";
 
 export async function createPlayerHandler(
@@ -35,6 +36,15 @@ export async function getPlayerHandler(
   }
 
   return res.send(player);
+}
+export async function getAllPlayersHandler(req: Request, res: Response) {
+  const players = await findAllPlayers({});
+  if (!players || players.length == 0) {
+    console.log("return");
+    return res.sendStatus(404);
+  }
+
+  return res.send(players);
 }
 
 export async function updatePlayerHandler(
